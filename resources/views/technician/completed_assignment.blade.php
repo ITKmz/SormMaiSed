@@ -9,18 +9,18 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-900">
+<body class="">
   <!-- Navbar -->
   @include('components._navbar')
 
   <!-- Content -->
 
   <!-- หน้านี้จะมีแต่ออเด้อที่ทำเสร็จแล้ว ตรง Received จะมีอันนี้กับ Sucessful -->
-  <div class="w-3/5 h-max my-5 mx-auto p-2 grid grid-cols-2 gap-2">
-  <a href="{{ route('inprogress') }}" class="text-blue-200 font-normal text-2xl text-center">In progress</a>
-    <a href="{{ route('completed') }}" class="text-white font-normal text-2xl text-center">Completed</a>
+  <div class="w-3/5 h-max my-5 mx-auto p-2 grid grid-cols-2 gap-2 mt-24">
+  <a href="{{ route('inprogress') }}" class="text-gray-400 font-normal text-2xl text-center">In progress</a>
+    <a href="{{ route('completed') }}" class="text-black font-normal text-2xl text-center">Completed</a>
+    <hr class="border-t-2 border-gray-400 my-4">
     <hr class="border-t-2 border-gray-900 my-4">
-    <hr class="border-t-2 border-blue-200 my-4">
   </div>
 
   <div class="bg-gray-200 w-4/6 h-max my-5 mx-auto rounded-xl p-10 grid grid-cols-4 gap-4">

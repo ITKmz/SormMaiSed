@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>SormMaiSed</title>
-  @vite('resources/css/app.css')
+  @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-<body class="bg-gray-900">
+<body class="">
   <!-- Navbar -->
   @include('components\_navbar')
 
   <!-- Content -->
   <div class="">
-    <h1 class="mx-auto text-4xl font-semibold text-gray-900 dark:text-white w-fit my-8">Follow up your device</h1>
+    <h1 class="mx-auto text-4xl font-semibold text-gray-900 dark:text-white w-fit my-8 mt-32">Follow up your device</h1>
     <?php 
       $order_info = Session::get('order_info');
       $product_info = Session::get('product_info');
@@ -34,9 +34,6 @@
               Description
             </th>
             <th scope="col" class="px-6 py-3">
-              Price
-            </th>
-            <th scope="col" class="px-6 py-3">
               Status
             </th>
           </tr>
@@ -50,9 +47,6 @@
             </th>
             <td class="px-6 py-4">
               {{ $product->product_description }}
-            </td>
-            <td class="px-6 py-4">
-              1
             </td>
             <td class="px-6 py-4 flex items-center">
               @if($product->product_status == 'Completed')

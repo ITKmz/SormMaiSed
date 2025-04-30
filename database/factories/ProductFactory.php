@@ -21,7 +21,7 @@ class ProductFactory extends Factory
     {
         return [
             'order_id' => order::inRandomOrder()->first()->order_id,
-            'employee_id' => Employee::inRandomOrder()->first()->employee_id,
+            'employee_id' => fake()->randomElement([Employee::inRandomOrder()->first()->employee_id, null]),
             'product_type' => fake()->randomElement(['PC', 'Laptop', 'Tablet', 'Smartphone(iOS)','Smartphone(Android)','Other']),
             'product_description' => fake()->sentence(),
             'product_stock_id' => Stock::inRandomOrder()->first()->product_stock_id,

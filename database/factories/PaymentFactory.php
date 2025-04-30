@@ -17,10 +17,11 @@ class PaymentFactory extends Factory
      */
     public function definition(): array
     {
+        $order_id = Order::pluck("order_id")->toArray();
         return [
-            'order_id' =>Order::all()->random()->order_id,
+            'order_id' =>fake()->unique()->randomElement($order_id),
             'payment_method' =>fake()->randomElement(['Cash', 'Credit Card', 'Debit Card']),
-            'payment_amount' =>fake()->randomFloat(2, 0, 1000),
+            'is_paid' =>fake()->randomElement([0,1]),
             'payment_date' =>fake()->date(),
         ];
     }

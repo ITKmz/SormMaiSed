@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('index');
@@ -21,35 +22,37 @@ Route::get('signin', function () {
 
 Route::post('signin', [UserController::class,'login']);
 
-Route::get('signout', [UserController::class,'logout'])->name('signout');
+Route::get('signout/{role}', [UserController::class,'logout'])->name('signout');
 
 Route::get('maintain', [UserController::class,'maintain'])->name('maintain');
 
-Route::get('customer/orders', function () {
-    return view('customer/orders');
-})->name('orders');
+Route::post('submitmaintain', [UserController::class,'insert'])->name('submitmaintain');
 
-Route::get('customer/waitpayment', [UserController::class,'listwaitpayment'])->name('waitpayment'); 
+Route::get('customer/orders', [UserController::class,'listorder'])->name('orders');
 
-Route::get('dashboard', function () {
-    return view('admin/employee_login');
-})->name('dashboard');
+Route::get('customer/waitpayment', [UserController::class,'listwaitpayment'])->name('waitpayment');
 
-Route::get('dashboard/order', function () {
-    return view('admin/adminorder');
-})->name('d_order');
+Route::get('paynow/{id}', [UserController::class,'paynow'])->name('paynow');
 
-Route::get('dashboard/technician', function () {
-    return view('admin/technician');
-})->name('technician');
+Route::get('cancel/{id}', [UserController::class,'cancel'])->name('cancel');
 
-Route::get('dashboard/customer', function () {
+Route::get('dashboard', [AdminController::class,'is_logged_in'])->name('dashboard');
+
+Route::post('dashboard', [AdminController::class,'login']);
+
+Route::get('dashboard/order', [AdminController::class,'listorder'])->name('d_order');
+
+Route::get('dashboard/info/technician', [AdminController::class,'listtechnician'])->name('d_technician');
+
+Route::get('firedtechnician/{id}', [AdminController::class,'firedtechnician'])->name('firedtechnician');
+
+Route::get('dashboard/info/customer', function () {
     return view('admin/customer');
-})->name('customer');
+})->name('d_customer');
 
-Route::get('dashboard/assign', function () {
-    return view('admin/assign');
-})->name('assign');
+Route::get('dashboard/performance', [AdminController::class,'performance'])->name('d_performance');
+
+Route::get('assignorder', [AdminController::class,'assignorder'])->name('assignorder');
 
 Route::get('dashboard/assignment/completed', function () {
     return view('technician/completed_assignment');

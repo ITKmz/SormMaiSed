@@ -20,7 +20,7 @@ class OrderFactory extends Factory
     {
         return [
             'customer_id'=>Customer::inRandomOrder()->first()->customer_id,
-            'employee_id'=>fake()->randomElement([null,Employee::inRandomOrder()->first()->employee_id]),
+            'is_finished'=>fake()->randomElement([0,1]),
             'order_time'=>fake()->date(),
         ];
     }

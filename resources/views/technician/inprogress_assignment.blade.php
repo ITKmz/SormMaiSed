@@ -9,7 +9,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-900">
+<body class="">
   <!-- Navbar -->
   @include('components._navbar')
 
@@ -17,11 +17,11 @@
   
   <!-- หน้านี้จะแสดงข้อมูลของออเด้อที่ยังทำไม่เสร็จ -->
 
-  <div class="w-3/5 h-max my-5 mx-auto p-2 grid grid-cols-2 gap-2">
-    <a href="{{ route('inprogress') }}" class="dark:text-white font-normal text-2xl text-center">In progress</a>
-    <a href="{{ route('completed') }}" class="dark:text-blue-200 font-normal text-2xl text-center">Completed</a>
-    <hr class="border-t-2 border-blue-200 my-4">
+  <div class="w-3/5 h-max my-5 mx-auto p-2 grid grid-cols-2 gap-2 mt-24">
+    <a href="{{ route('inprogress') }}" class="text-black font-normal text-2xl text-center">In progress</a>
+    <a href="{{ route('completed') }}" class="text-gray-400 font-normal text-2xl text-center">Completed</a>
     <hr class="border-t-2 border-gray-900 my-4">
+    <hr class="border-t-2 border-gray-400 my-4">
   </div>
 
   <div class="bg-gray-200 w-4/6 h-max my-5 mx-auto rounded-xl p-10 grid grid-cols-5 gap-5">

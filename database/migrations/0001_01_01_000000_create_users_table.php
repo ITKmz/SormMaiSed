@@ -32,11 +32,10 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->boolean('is_finished')->default(false);
             $table->timestamp('order_time');
 
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onUpdate('CASCADE');
-            $table->foreign('employee_id')->references('employee_id')->on('employees')->onUpdate('CASCADE');
         });
 
         Schema::create('payments', function (Blueprint $table) {
@@ -44,7 +43,6 @@ return new class extends Migration {
             $table->unsignedBigInteger('order_id');
             $table->string('payment_method');
             $table->boolean('is_paid')->default(false);
-            $table->integer('payment_amount');
             $table->timestamp('payment_date');
 
             $table->foreign('order_id')->references('order_id')->on('orders')->onUpdate('CASCADE');
@@ -59,26 +57,26 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id('product_id');
             $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('employee_id')->nullable();
             $table->string('product_type');
             $table->text('product_description');
             $table->unsignedBigInteger('product_stock_id');
             $table->string('product_status');
 
             $table->foreign('order_id')->references('order_id')->on('orders')->onUpdate('CASCADE');
-            $table->foreign('employee_id')->references('employee_id')->on('employees')->onUpdate('CASCADE');
+            $table->foreign('employee_id')->references('employee_id')->on('employees')->onUpdate('CASCADE')->onDelete('SET NULL');
             $table->foreign('product_stock_id')->references('product_stock_id')->on('stocks')->onUpdate('CASCADE');
         });
 
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id('feedback_id');
-            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('customer_id');
             $table->text('feedback_description');
             $table->integer('feedback_rating');
             $table->timestamp('feedback_time');
 
-            $table->foreign('order_id')->references('order_id')->on('orders')->onUpdate('CASCADE');
+            $table->foreign('product_id')->references('product_id')->on('products')->onUpdate('CASCADE');
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onUpdate('CASCADE');
         });
 

@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>SormMaiSed</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-<body class="bg-gray-900">
+<body class="">
     <!-- Navbar -->
     @include('components\_navbar')
 
@@ -37,7 +37,7 @@
                     <?= $error ?>
                 </div>
                 <button type="Login"
-                    class="mx-auto block text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Sign in</button>
+                    class="mx-auto mt-12 block text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Sign in</button>
                 <a href="/register" class="mx-auto block text-center font-semibold text-gray-400 underline">Create New
                     Account</a>
             </form>
