@@ -20,7 +20,7 @@ Route::get('signin', function () {
     return view('user_login');
 })->name('signin');
 
-Route::post('signin', [UserController::class,'login']);
+Route::post('signin', [UserController::class,'signin']);
 
 Route::get('signout/{role}', [UserController::class,'logout'])->name('signout');
 

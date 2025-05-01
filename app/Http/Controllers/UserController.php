@@ -19,7 +19,7 @@ class UserController extends Controller
         return redirect()->route('follow')->with('order_info', $order_info)->with('product_info', $product_info);
     }
 
-    function login(Request $req)
+    function signin(Request $req)
     {
         $data = [
             "username" => $req->username,
